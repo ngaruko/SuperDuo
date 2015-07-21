@@ -7,6 +7,7 @@ import android.content.ComponentName;
 import android.content.Intent;
 import android.database.Cursor;
 import android.net.Uri;
+import android.util.Log;
 import android.widget.RemoteViews;
 
 /**
@@ -52,8 +53,7 @@ public class ScoreWidgetIntentService extends IntentService {
 
     @Override
     protected void onHandleIntent(Intent intent) {
-
-
+        Log.e("handling ", "widget");
         // Retrieve all of the Today widget ids: these are the widgets we need to update
         AppWidgetManager appWidgetManager = AppWidgetManager.getInstance(this);
         int[] appWidgetIds = appWidgetManager.getAppWidgetIds(new ComponentName(this,
@@ -64,7 +64,7 @@ public class ScoreWidgetIntentService extends IntentService {
                         null, DatabaseContract.scores_table.DATE_COL + " ASC");
         if (data == null) {
 
-            new MainScreenFragment().update_scores();
+           // new MainScreenFragment().update_scores();
         }
         if (!data.moveToFirst()) {
             data.close();

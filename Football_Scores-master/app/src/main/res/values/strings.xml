@@ -44,4 +44,5 @@
     <string name="away_crest">Away Team Crest</string>
     <string name="away_team">Away Team</string>
     <string name="home_team">Home Team</string>
+    <string name="match_time">Match Time</string>
 </resources>

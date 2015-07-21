@@ -2,10 +2,15 @@ package it.jaschke.alexandria.services;
 
 import android.app.IntentService;
 import android.content.ContentValues;
+import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.database.Cursor;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.net.Uri;
 import android.support.v4.content.LocalBroadcastManager;
+import android.support.v7.app.AlertDialog;
 import android.util.Log;
 
 import org.json.JSONArray;
@@ -90,6 +95,31 @@ public class BookService extends IntentService {
         }
 
         bookEntry.close();
+
+      //Check for internet connection
+
+        ConnectivityManager conMgr = (ConnectivityManager) getApplicationContext().getSystemService(Context.CONNECTIVITY_SERVICE);
+        NetworkInfo netInfo = conMgr.getActiveNetworkInfo();
+
+        if (netInfo == null || !netInfo.isConnectedOrConnecting()) {
+            //Toast.makeText(getActivity(), "No Internet connection!", Toast.LENGTH_LONG).show();
+            AlertDialog alertDialog = new AlertDialog.Builder(getBaseContext()).create();
+            alertDialog.setTitle("Network Error");
+            alertDialog.setMessage("Please check your netowk connections and try again!");
+            alertDialog.setButton(AlertDialog.BUTTON_NEUTRAL, "OK",
+                    new DialogInterface.OnClickListener() {
+                        public void onClick(DialogInterface dialog, int which) {
+                            dialog.dismiss();
+                        }
+                    });
+
+            alertDialog.show();
+
+            return;
+        }
+
+
+
 
         HttpURLConnection urlConnection = null;
         BufferedReader reader = null;
