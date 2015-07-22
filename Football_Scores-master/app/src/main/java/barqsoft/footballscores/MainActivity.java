@@ -57,25 +57,7 @@ public class MainActivity extends AppCompatActivity
         return super.onOptionsItemSelected(item);
     }
 
-//    private void updateWidget() {
-//
-//        Context context = getBaseContext();
-//
-//        AppWidgetManager appWidgetManager = AppWidgetManager.getInstance(context);
-//        ComponentName appWidgetComponentName =
-//                new ComponentName(context, ScoreWidgetProvider.class);
-//        int[] appWidgetIds = appWidgetManager.getAppWidgetIds(appWidgetComponentName);
-//
-//        for(int index = 0; index < appWidgetIds.length; index++) {
-//            int appWidgetId = appWidgetIds[index];
-//            LogHelper.log(String.format("Widget ID:%d", appWidgetId));
-//
-//            RemoteViews appWidgetViews = ScoreWidgetProvider.getWidgetRemoteViews(context, appWidgetId);
-//            // findViewID(R.id.txtTitleText).setText("MEOW!!");
-//            appWidgetViews.setCharSequence(R.id.txtTitleText, "setText", "MEOW!!");
-//            appWidgetManager.updateAppWidget(appWidgetId, appWidgetViews);
-//        }
-//    }
+
 
     @Override
     protected void onSaveInstanceState(Bundle outState)
